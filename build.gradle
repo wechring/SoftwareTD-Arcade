@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'jacoco'
+    id 'info.solidsoft.pitest' version '1.5.2'
 }
 
 group = 'org.example'
@@ -13,8 +15,33 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'org.apache.commons:commons-lang3:3.11'
+
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
 }
 
 test {
     useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
+    
+    targetClasses = ['tetris.*', 'pacman.*', 'minesweeper.*']  
+    targetTests = ['tetris.*', 'pacman.*', 'minesweeper.*']
+    
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = true
+        html.required = true
+    }
 }
