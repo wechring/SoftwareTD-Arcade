@@ -1,7 +1,5 @@
 package g2048;
 
-import netscape.security.UserTarget;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -20,7 +18,7 @@ public class TwentyGame extends Game {
     private static final String highscores = "assets/2048/highscore.txt";
 
     public TwentyGame() {
-        board = new Board( 4);
+        board = new Board(4);
         display = new TwentyDisplay(this);
         try {
             BufferedReader in = new BufferedReader(new FileReader(highscores));
@@ -65,8 +63,7 @@ public class TwentyGame extends Game {
         if (board.isDead()) {
             hasEnded = true;
             try {
-                BufferedWriter writer =
-                        new BufferedWriter(new FileWriter(highscores));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(highscores));
                 writer.write("" + highscore);
                 writer.close();
             } catch (IOException ex) {
