@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
-    id 'info.solidsoft.pitest' version '1.5.2'
+    id 'info.solidsoft.pitest' version '1.19.0'
 }
 
 group = 'org.example'
@@ -27,11 +27,11 @@ test {
 }
 
 pitest {
-    junit5PluginVersion = '0.12'
-    
-    targetClasses = ['tetris.*', 'pacman.*', 'minesweeper.*']  
+    junit5PluginVersion = '1.2.0'
+
+    targetClasses = ['tetris.*', 'pacman.*', 'minesweeper.*']
     targetTests = ['tetris.*', 'pacman.*', 'minesweeper.*']
-    
+
     threads = 4
     outputFormats = ['XML', 'HTML']
     timestampedReports = false
