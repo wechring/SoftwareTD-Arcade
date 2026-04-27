@@ -28,6 +28,16 @@ public class TetradTest {
 
     // EP & WHITEBOX TESTS
 
+    // tests that the different types are generated randomly
+    @Test
+    void testTypesTetrad() {
+        MyBoundedGrid<Block> gridOne = new MyBoundedGrid<>(20, 10);
+        for (int i = 0; i <= 6; i++) {
+            Tetrad tet = new Tetrad(gridOne, i);
+            assertEquals(i, tet.getType());
+        }
+    }
+
     // tests that tetrad can move when grid is empty
     @Test
     void translationIsValid() {

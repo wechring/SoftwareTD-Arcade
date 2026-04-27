@@ -39,14 +39,14 @@ public class Block {
         color = newColor;
     }
 
-    /**
-     * Returns the grid that the block is contained in.
-     *
-     * @return The grid that the block is stored in.
-     */
-    public MyBoundedGrid<Block> getGrid() {
-        return grid;
-    }
+//    /**
+//     * Returns the grid that the block is contained in.
+//     *
+//     * @return The grid that the block is stored in.
+//     */
+//    public MyBoundedGrid<Block> getGrid() {
+//        return grid;
+//    }
 
     /**
      * Returns the current location of the block.

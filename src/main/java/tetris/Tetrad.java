@@ -220,23 +220,23 @@ public class Tetrad {
         return locs;
     }
 
-    /**
-     * Returns the locations of this tetrad in a Location array containing
-     * four elements, with each element representing the location of one of
-     * this Tetrads blocks on its grid.
-     *
-     * @return A Location array containing four elements, with each element
-     * representing the location of one of this Tetrads blocks on
-     * its grid.
-     */
-    public Location[] getLocs() {
-        Location[] locs = new Location[4];
-        for (int i = 0; i < blocks.length; i++) {
-            Block bl = blocks[i];
-            locs[i] = bl.getLocation();
-        }
-        return locs;
-    }
+//    /**
+//     * Returns the locations of this tetrad in a Location array containing
+//     * four elements, with each element representing the location of one of
+//     * this Tetrads blocks on its grid.
+//     *
+//     * @return A Location array containing four elements, with each element
+//     * representing the location of one of this Tetrads blocks on
+//     * its grid.
+//     */
+//    public Location[] getLocs() {
+//        Location[] locs = new Location[4];
+//        for (int i = 0; i < blocks.length; i++) {
+//            Block bl = blocks[i];
+//            locs[i] = bl.getLocation();
+//        }
+//        return locs;
+//    }
 
     /**
      * Checks if the specified locations in the specified grid are empty.

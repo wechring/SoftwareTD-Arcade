@@ -41,6 +41,14 @@ pitest {
 
     targetClasses = ['tetris.*', 'pacman.*', 'minesweeper.*']
     targetTests = ['tetris.*', 'pacman.*', 'minesweeper.*']
+    excludedClasses = ['tetris.BlockDisplay', 'tetris.Main', 'tetris.Tetris']
+
+    jvmArgs = [
+            '-XX:+EnableDynamicAgentLoading',
+            '-Dnet.bytebuddy.experimental=true',
+            '--add-opens', 'java.base/java.util=ALL-UNNAMED',
+            '--add-opens', 'java.base/jdk.internal.util.random=ALL-UNNAMED'
+    ]
 
     threads = 4
     outputFormats = ['XML', 'HTML']
@@ -49,6 +57,15 @@ pitest {
 
 jacocoTestReport {
     dependsOn test
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/BlockDisplay*',
+                    '**/Main*',
+                    '**/Tetris*'
+            ])
+        }))
+    }
     reports {
         xml.required = true
         csv.required = true

@@ -124,71 +124,71 @@ public class Location implements Comparable {
         return col;
     }
 
-    /**
-     * Gets the adjacent location in any one of the eight compass directions.
-     *
-     * @param direction the direction in which to find a neighbor location
-     * @return the adjacent location in the direction that is closest to
-     * <tt>direction</tt>
-     */
-    public Location getAdjacentLocation(int direction) {
-        // reduce mod 360 and round to closest multiple of 45
-        int adjustedDirection = (direction + HALF_RIGHT / 2) % FULL_CIRCLE;
-        if (adjustedDirection < 0)
-            adjustedDirection += FULL_CIRCLE;
+//    /**
+//     * Gets the adjacent location in any one of the eight compass directions.
+//     *
+//     * @param direction the direction in which to find a neighbor location
+//     * @return the adjacent location in the direction that is closest to
+//     * <tt>direction</tt>
+//     */
+//    public Location getAdjacentLocation(int direction) {
+//        // reduce mod 360 and round to closest multiple of 45
+//        int adjustedDirection = (direction + HALF_RIGHT / 2) % FULL_CIRCLE;
+//        if (adjustedDirection < 0)
+//            adjustedDirection += FULL_CIRCLE;
+//
+//        adjustedDirection = (adjustedDirection / HALF_RIGHT) * HALF_RIGHT;
+//        int dc = 0;
+//        int dr = 0;
+//        if (adjustedDirection == EAST)
+//            dc = 1;
+//        else if (adjustedDirection == SOUTHEAST) {
+//            dc = 1;
+//            dr = 1;
+//        } else if (adjustedDirection == SOUTH)
+//            dr = 1;
+//        else if (adjustedDirection == SOUTHWEST) {
+//            dc = -1;
+//            dr = 1;
+//        } else if (adjustedDirection == WEST)
+//            dc = -1;
+//        else if (adjustedDirection == NORTHWEST) {
+//            dc = -1;
+//            dr = -1;
+//        } else if (adjustedDirection == NORTH)
+//            dr = -1;
+//        else if (adjustedDirection == NORTHEAST) {
+//            dc = 1;
+//            dr = -1;
+//        }
+//        return new Location(getRow() + dr, getCol() + dc);
+//    }
 
-        adjustedDirection = (adjustedDirection / HALF_RIGHT) * HALF_RIGHT;
-        int dc = 0;
-        int dr = 0;
-        if (adjustedDirection == EAST)
-            dc = 1;
-        else if (adjustedDirection == SOUTHEAST) {
-            dc = 1;
-            dr = 1;
-        } else if (adjustedDirection == SOUTH)
-            dr = 1;
-        else if (adjustedDirection == SOUTHWEST) {
-            dc = -1;
-            dr = 1;
-        } else if (adjustedDirection == WEST)
-            dc = -1;
-        else if (adjustedDirection == NORTHWEST) {
-            dc = -1;
-            dr = -1;
-        } else if (adjustedDirection == NORTH)
-            dr = -1;
-        else if (adjustedDirection == NORTHEAST) {
-            dc = 1;
-            dr = -1;
-        }
-        return new Location(getRow() + dr, getCol() + dc);
-    }
-
-    /**
-     * Returns the direction from this location toward another location. The
-     * direction is rounded to the nearest compass direction.
-     *
-     * @param target a location that is different from this location
-     * @return the closest compass direction from this location toward
-     * <code>target</code>
-     */
-    public int getDirectionToward(Location target) {
-        int dx = target.getCol() - getCol();
-        int dy = target.getRow() - getRow();
-        // y axis points opposite to mathematical orientation
-        int angle = (int) Math.toDegrees(Math.atan2(-dy, dx));
-
-        // mathematical angle is counterclockwise from x-axis,
-        // compass angle is clockwise from y-axis
-        int compassAngle = RIGHT - angle;
-        // prepare for truncating division by 45 degrees
-        compassAngle += HALF_RIGHT / 2;
-        // wrap negative angles
-        if (compassAngle < 0)
-            compassAngle += FULL_CIRCLE;
-        // round to nearest multiple of 45
-        return (compassAngle / HALF_RIGHT) * HALF_RIGHT;
-    }
+//    /**
+//     * Returns the direction from this location toward another location. The
+//     * direction is rounded to the nearest compass direction.
+//     *
+//     * @param target a location that is different from this location
+//     * @return the closest compass direction from this location toward
+//     * <code>target</code>
+//     */
+//    public int getDirectionToward(Location target) {
+//        int dx = target.getCol() - getCol();
+//        int dy = target.getRow() - getRow();
+//        // y axis points opposite to mathematical orientation
+//        int angle = (int) Math.toDegrees(Math.atan2(-dy, dx));
+//
+//        // mathematical angle is counterclockwise from x-axis,
+//        // compass angle is clockwise from y-axis
+//        int compassAngle = RIGHT - angle;
+//        // prepare for truncating division by 45 degrees
+//        compassAngle += HALF_RIGHT / 2;
+//        // wrap negative angles
+//        if (compassAngle < 0)
+//            compassAngle += FULL_CIRCLE;
+//        // round to nearest multiple of 45
+//        return (compassAngle / HALF_RIGHT) * HALF_RIGHT;
+//    }
 
     /**
      * Indicates whether some other <code>Location</code> object is "equal to"
